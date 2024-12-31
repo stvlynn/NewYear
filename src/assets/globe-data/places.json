@@ -1,0 +1,14 @@
+{
+  "places": [
+    {"lat": 40.7128, "lng": -74.0060, "name": "New York"},
+    {"lat": 31.2304, "lng": 121.4737, "name": "Shanghai"},
+    {"lat": 35.6762, "lng": 139.6503, "name": "Tokyo"},
+    {"lat": 51.5074, "lng": -0.1278, "name": "London"},
+    {"lat": 48.8566, "lng": 2.3522, "name": "Paris"},
+    {"lat": -33.8688, "lng": 151.2093, "name": "Sydney"},
+    {"lat": 55.7558, "lng": 37.6173, "name": "Moscow"},
+    {"lat": 22.3193, "lng": 114.1694, "name": "Hong Kong"},
+    {"lat": 1.3521, "lng": 103.8198, "name": "Singapore"},
+    {"lat": -23.5505, "lng": -46.6333, "name": "São Paulo"}
+  ]
+}
