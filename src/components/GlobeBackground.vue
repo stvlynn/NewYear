@@ -20,7 +20,7 @@ import {
   AdditiveBlending,
   Vector3
 } from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import countries from '../assets/globe-data/globe-data-min.json'
 import places from '../assets/globe-data/places.json'
 
