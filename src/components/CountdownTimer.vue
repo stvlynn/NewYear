@@ -4,6 +4,14 @@ import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import confetti from 'canvas-confetti'
 
+// 为window对象添加类型声明
+declare global {
+  interface Window {
+    __DEBUG_FIREWORKS__: () => void;
+    __STOP_FIREWORKS__: () => void;
+  }
+}
+
 const { t } = useI18n()
 
 const targetDate = dayjs('2025-01-01T00:00:00')
@@ -14,7 +22,7 @@ const seconds = ref(0)
 const isNewYear = ref(false)
 
 let timer: number
-let fireworksInterval: number | null = null
+let fireworksInterval: ReturnType<typeof setInterval> | undefined = undefined
 
 const calculateTimeLeft = () => {
   const now = dayjs()
@@ -35,9 +43,9 @@ const calculateTimeLeft = () => {
 
 const celebrateNewYear = () => {
   // 如果已经有烟花在放，先停止它
-  if (fireworksInterval) {
+  if (fireworksInterval !== undefined) {
     clearInterval(fireworksInterval)
-    fireworksInterval = null
+    fireworksInterval = undefined
   }
 
   const duration = Math.min(15 * 1000, 180 * 1000) // 最多3分钟
@@ -53,7 +61,7 @@ const celebrateNewYear = () => {
 
     if (timeLeft <= 0) {
       clearInterval(fireworksInterval)
-      fireworksInterval = null
+      fireworksInterval = undefined
       return
     }
 
@@ -74,9 +82,9 @@ const celebrateNewYear = () => {
 
 // 添加停止烟花的方法
 const stopFireworks = () => {
-  if (fireworksInterval) {
+  if (fireworksInterval !== undefined) {
     clearInterval(fireworksInterval)
-    fireworksInterval = null
+    fireworksInterval = undefined
     // 清除所有剩余的烟花粒子
     confetti.reset()
   }
@@ -99,7 +107,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   clearInterval(timer)
-  if (fireworksInterval) {
+  if (fireworksInterval !== undefined) {
     clearInterval(fireworksInterval)
   }
 })
