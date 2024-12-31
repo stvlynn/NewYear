@@ -122,22 +122,47 @@ onUnmounted(() => {
       
       <div v-if="!isNewYear" class="flex flex-wrap gap-4 justify-center">
         <div class="countdown-item">
-          <span class="countdown-value">{{ days }}</span>
+          <span class="countdown-value">{{ days.toString().padStart(2, '0') }}</span>
           <span class="countdown-label">{{ t('countdown.days') }}</span>
         </div>
         <div class="countdown-item">
-          <span class="countdown-value">{{ hours }}</span>
+          <span class="countdown-value">{{ hours.toString().padStart(2, '0') }}</span>
           <span class="countdown-label">{{ t('countdown.hours') }}</span>
         </div>
         <div class="countdown-item">
-          <span class="countdown-value">{{ minutes }}</span>
+          <span class="countdown-value">{{ minutes.toString().padStart(2, '0') }}</span>
           <span class="countdown-label">{{ t('countdown.minutes') }}</span>
         </div>
         <div class="countdown-item">
-          <span class="countdown-value">{{ seconds }}</span>
+          <span class="countdown-value">{{ seconds.toString().padStart(2, '0') }}</span>
           <span class="countdown-label">{{ t('countdown.seconds') }}</span>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+@font-face {
+  font-family: 'Digital';
+  src: url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+.countdown-item {
+  @apply flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm rounded-lg p-4 min-w-[120px];
+}
+
+.countdown-value {
+  @apply text-4xl md:text-6xl lg:text-7xl font-bold text-white;
+  font-family: 'Digital', monospace;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+}
+
+.countdown-label {
+  @apply text-sm md:text-base text-white/80 mt-2;
+}
+</style>
