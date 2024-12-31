@@ -17,8 +17,7 @@ import {
   BackSide,
   ShaderMaterial,
   Mesh,
-  AdditiveBlending,
-  Vector3
+  AdditiveBlending
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import countries from '../assets/globe-data/globe-data-min.json'
