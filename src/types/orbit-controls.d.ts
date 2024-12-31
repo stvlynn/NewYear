@@ -1,5 +1,5 @@
 declare module 'three/examples/jsm/controls/OrbitControls' {
-  import { Camera, WebGLRenderer } from 'three'
+  import { Camera, WebGLRenderer, Vector3 } from 'three'
 
   export class OrbitControls {
     constructor(camera: Camera, domElement?: HTMLElement)
@@ -15,6 +15,7 @@ declare module 'three/examples/jsm/controls/OrbitControls' {
     autoRotateSpeed: number
     minPolarAngle: number
     maxPolarAngle: number
+    target: Vector3
     update(): void
     dispose(): void
   }

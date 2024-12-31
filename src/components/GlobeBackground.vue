@@ -150,7 +150,7 @@ const init = () => {
   // Initialize controls
   controls = new OrbitControls(camera, renderer.domElement)
   controls.enableDamping = true
-  controls.dynamicDampingFactor = 0.01
+  controls.dampingFactor = 0.01
   controls.enablePan = false
   controls.minDistance = 220
   controls.maxDistance = 350
@@ -242,7 +242,7 @@ const animate = () => {
       ? (mouseX / 2 - camera.position.x) * 0.005
       : 0
   camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005
-  camera.lookAt(new Vector3(0, 0, 0))
+  controls.target.set(0, 0, 0)
   controls.update()
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
