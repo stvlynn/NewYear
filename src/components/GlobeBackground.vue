@@ -20,9 +20,23 @@ import {
   AdditiveBlending,
   Vector3
 } from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import countries from '../assets/globe-data/globe-data-min.json'
 import places from '../assets/globe-data/places.json'
+
+interface Place {
+  lat: number
+  lng: number
+  name: string
+}
+
+interface Arc {
+  startLat: number
+  startLng: number
+  endLat: number
+  endLng: number
+  color: string
+}
 
 let renderer: WebGLRenderer
 let camera: PerspectiveCamera
@@ -35,9 +49,9 @@ let windowHalfX = window.innerWidth / 2
 let windowHalfY = window.innerHeight / 2
 
 // 生成随机弧线数据
-const generateArcs = () => {
-  const arcs = []
-  const cityPlaces = places.places
+const generateArcs = (): Arc[] => {
+  const arcs: Arc[] = []
+  const cityPlaces = places.places as Place[]
   const numArcs = Math.floor(Math.random() * 3) + 1 // 每次生成1-3条弧线
   
   for (let i = 0; i < numArcs; i++) {
@@ -228,7 +242,7 @@ const animate = () => {
       ? (mouseX / 2 - camera.position.x) * 0.005
       : 0
   camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005
-  camera.lookAt(scene.position)
+  camera.lookAt(new Vector3(0, 0, 0))
   controls.update()
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
